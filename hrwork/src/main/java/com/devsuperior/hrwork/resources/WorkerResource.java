@@ -3,7 +3,11 @@ package com.devsuperior.hrwork.resources;
 import java.util.List;
 import java.util.Optional;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +24,11 @@ import com.devsuperior.hrwork.repositories.WorkerRepository;
 @RestController
 @RequestMapping(value = "/workers")
 public class WorkerResource {
+    @Autowired
+    private static Logger logger = LoggerFactory.getLogger(WorkerResource.class);
 
+    @Autowired
+    private Environment env;
 
     @Autowired
     private WorkerRepository repository;
@@ -29,6 +37,8 @@ public class WorkerResource {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Optional<Worker>> findAll(@PathVariable Long id) {
        
+        logger.info("Port ="+ env.getProperty("local.server.port"));
+
         Optional<Worker> list = repository.findById(id);
         
         return ResponseEntity.ok(list);
