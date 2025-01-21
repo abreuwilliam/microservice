@@ -5,18 +5,17 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.12.RELEASE</version> <!-- Versão compatível com Greenwich -->
+    <version>3.4.1</version> <!-- Versão atualizada para 3.4.1 -->
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.devsuperior</groupId>
   <artifactId>hrpayroll</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>hrpayroll</name>
-  <description>Demo project for Spring Boot</description>
+  <name>hr-payroll</name>
+  <description>Payroll Microservice</description>
 
   <properties>
-    <java.version>11</java.version> <!-- Java 11 é recomendado para Greenwich -->
-    <spring-cloud.version>Greenwich.SR6</spring-cloud.version>
+    <java.version>21</java.version> <!-- A versão do Java deve ser compatível -->
   </properties>
 
   <dependencies>
@@ -26,37 +25,34 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
+    <!-- Spring Boot Starter Test -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.junit.vintage</groupId>
+          <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
     <!-- Spring Cloud OpenFeign -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
 
-    <!-- Ribbon -->
+    <!-- Spring Cloud Eureka Client -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
-
-    <!-- Test Starter -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
+     
+    <!-- Spring Cloud Hystrix -->
+   
   </dependencies>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>${spring-cloud.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
   <build>
     <plugins>
@@ -66,4 +62,16 @@
       </plugin>
     </plugins>
   </build>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>2024.0.0</version> <!-- Certifique-se de usar a versão compatível do Spring Cloud -->
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>

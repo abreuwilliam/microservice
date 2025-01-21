@@ -8,6 +8,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+
+
+
+
 @Entity
 @Table(name = "tb_worker")
 public class Worker implements Serializable{
